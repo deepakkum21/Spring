@@ -1,6 +1,7 @@
 package com.stpl.deepak.springsecuritydemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,6 +15,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+// for Oauth2
+@EnableOAuth2Sso
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
@@ -29,7 +32,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
 	// used when want to get user from the db
-	@Autowired
+	/*@Autowired
 	private UserDetailsService userDetailsService;
 	
 	@Bean
@@ -42,7 +45,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 		// if want to secure using BCRYPT 
 		provider.setPasswordEncoder(new BCryptPasswordEncoder());
 		return provider;
-	}
+	}*/
 
 	// to have our own login page instead of Spring
 	/*@Override
@@ -59,9 +62,15 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 			.clearAuthentication(true)
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/logout-success").permitAll();
-	}*/
+	}*/	
 	
-	
-	
+	// to have OAUTH2
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http
+				.csrf().disable()
+				.authorizeRequests().antMatchers("/login").permitAll()
+				.anyRequest().authenticated();
+		}	
 
 }
