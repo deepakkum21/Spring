@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SpringBoot2RestServiceApplication",
+            "request": "launch",
+            "mainClass": "com.deepak.springboot.rest.example.SpringBoot2RestServiceApplication",
+            "projectName": "spring-boot-2-rest-service-versioning"
+        }
+    ]
+}
