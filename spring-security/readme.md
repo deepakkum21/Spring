@@ -30,7 +30,7 @@ How to set a PasswordEncoder
 - override **configure(HttpSecurity) **
 
 
-
+![alt text](https://github.com/deepakkum21/Spring/blob/master/spring-security/pic1.PNG)
 
 
 
