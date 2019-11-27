@@ -1,0 +1,15 @@
+package com.deepak.springsecurityjpa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@SpringBootApplication
+@EnableJpaRepositories(basePackageClasses=com.deepak.springsecurityjpa.repository.UserRepository.class)
+public class SpringSecurityJpaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringSecurityJpaApplication.class, args);
+	}
+
+}
